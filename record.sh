@@ -3,8 +3,8 @@
 FNAME=uqm_"$HOSTNAME"_"$(date +%Y%m%d%H%M%S)"
 
 echo
-echo To watch via browser: http://85.143.112.127/?name=$FNAME
-echo To watch via mpv:     mpv rtmp://85.143.112.127:1935/live/"$FNAME".flv
+echo "To watch via browser: http://85.143.112.127/?name=$FNAME"
+echo "To watch via mpv:     mpv rtmp://85.143.112.127:1935/live/$FNAME.flv"
 echo
 echo Press any key to start the recording...
 
