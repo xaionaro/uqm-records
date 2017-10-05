@@ -6,13 +6,36 @@
 <script type="text/javascript" src="/jwplayer/jwplayer.js"></script>
 <div id="container">Loading the player ...</div>
     <script type="text/javascript">
-        jwplayer("container").setup({
+	if (typeof(getUrlParameter) == 'undefined') {
+		getUrlParameter = function getUrlParameter(sParam) {
+			var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+				sURLVariables = sPageURL.split('&'),
+				sParameterName,
+				i;
+
+			for (i = 0; i < sURLVariables.length; i++) {
+				sParameterName = sURLVariables[i].split('=');
+
+				if (sParameterName[0] === sParam) {
+				return sParameterName[1] === undefined ? true : sParameterName[1];
+				}
+			}
+		};
+	}
+
+	name='uqm'
+	var nameParam = getUrlParameter('name');
+	if (nameParam != null) {
+		name = nameParam
+	}
+
+	jwplayer("container").setup({
 		playlist: [{
 			image: "/uqm.png",
 			sources: [{ 
-				file: "rtmp://85.143.112.127:1935/live/uqm.flv"
+				file: "rtmp://85.143.112.127:1935/live/"+name+".flv"
 			},{
-				file: "uqm.flv"
+				file: name+".flv"
 			}]
 		}],
 		height: 480,
